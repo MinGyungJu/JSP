@@ -10,7 +10,7 @@
 <body>
 
 <h3>로그인 확인하기 </h3> 
-<form action="01_second.jsp" method="get">
+<form action="01_second.jsp" method="post"> <!-- 안쓰면 default값인 get (위에 아이디비번보임), post(안보임) -->
 사용자: <input name='User' type='text'><br/>
 비밀번호: <input name='Pass' type='password'><br/>
 <input type='submit' value='login'> 

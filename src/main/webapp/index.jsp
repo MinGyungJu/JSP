@@ -6,6 +6,11 @@
 <%
 	msg = "안녕하세요~";
 %>
+
+<!--  HTML 주석 -->
+<%-- JSP 주석 --%>
+<% //JAVA주석 %>
+
 <!DOCTYPE html>
 <html>
 <head>
