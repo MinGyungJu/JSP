@@ -9,7 +9,7 @@ public class MemberDao {
 
    // DB 연결시  관한 변수 
    private static final String    dbDriver   =   "oracle.jdbc.driver.OracleDriver";
-   private static final String      dbUrl      =   "jdbc:oracle:thin:@192.168.0.52:1521:xe";
+   private static final String      dbUrl      =   "jdbc:oracle:thin:@192.168.0.69:1521:xe";
    private static final String      dbUser      =   "scott";
    private static final String      dbPass      =   "tiger";
       
@@ -122,5 +122,41 @@ public class MemberDao {
       }
          
       return flag;
+   }
+   public boolean checkLogin( String id,String pass ) throws Exception{
+	   boolean result = false;
+	   
+	   try{
+	   // 0. 연결 객체 얻어오기   
+       Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+       System.out.println("DB 연결 성공");
+       
+
+        // 1. sql 문장 만들기 ( insert문 )
+       String sql = "SELECT * FROM membertest WHERE id LIKE ? AND password like ? ";
+       
+        // 2. sql 전송 객체 만들기
+       PreparedStatement ps = con.prepareStatement(sql);
+       ps.setString(1, id);
+       ps.setString(2, pass);
+       
+        // 3. sql 전송
+       //  - excuteQuery()      :  SELECT               return ResultSet
+       //   - excuteUpdate()   :  INSERT/DELETE/UPDATE      return int
+       ResultSet rs =  ps.executeQuery();
+       
+       if( rs.next() ) result = true;
+       else         result = false;
+       
+        // 4. 객체 닫기
+       rs.close();
+       ps.close();
+       con.close();
+	   }catch( Exception ex ){
+	         throw new MemberException("중복아이디 검사시 오류  : " + ex.toString() );         
+	   }
+	   
+
+	   return result;
    }
 }

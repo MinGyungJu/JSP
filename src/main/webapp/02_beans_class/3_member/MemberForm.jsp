@@ -14,27 +14,27 @@
       window.open("CheckId.jsp?userId="+id,"","width=200, height=150");
    }
    
-//    function chk(){
-// 	   var pw = document.frm.password.value;
-// 	   var rePw = document.frm.repassword.value;
+   function chk(){
+	   var pw = document.frm.password.value;
+	   var rePw = document.frm.repassword.value;
 	   
-// 	   if(pw != rePw) {
-// 		   alert("입력된 비밀번호가 다릅니다.")
-// 		   return false;
-// 	   }
-//    }
-$(function(){
+	   if(pw != rePw) {
+		   alert("입력된 비밀번호가 다릅니다.")
+		   return false;
+	   }
+   }
+// $(function(){
    
-   $("input[type='submit']").click(function(){
-      var pw = $("input[name='password']").val();
-      var rePw = $("input[name='repassword']").val();
+//    $("input[type='submit']").click(function(){
+//       var pw = $("input[name='password']").val();
+//       var rePw = $("input[name='repassword']").val();
       
-      if( pw != rePw ){
-         alert("비밀번호가 일치하지 않습니다.");
-      }
-   })
+//       if( pw != rePw ){
+//          alert("비밀번호가 일치하지 않습니다.");
+//       }
+//    })
    
-})
+// })
    
 </script>
 </head>
