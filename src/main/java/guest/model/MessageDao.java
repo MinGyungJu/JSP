@@ -62,11 +62,9 @@ public class MessageDao {
 		try{
 
 			// 1. 연결객체(Connection) 얻어오기
-			String url = "jdbc:oracle:thin:@192.168.0.69:1521:xe";
-			String user = "scott";
-			String pass = "tiger";
+			
 
-			con = DriverManager.getConnection(url,user,pass);
+			con = DriverManager.getConnection(dbUrl,dbUser,dbPass);
 			System.out.println("디비 연결 성공2");
 			// 2. sql 문장 만들기
 			String sql = "INSERT INTO guesttb(MESSAGE_ID,GUEST_NAME,PASSWORD,MESSAGE) VALUES(seq_guestTb_messageId.nextval,?,?,?)";
