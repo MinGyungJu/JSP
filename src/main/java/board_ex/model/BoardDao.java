@@ -195,9 +195,11 @@ public class BoardDao
 			while(rs.next()) {
 				BoardVO m = new BoardVO();
 				m.setSeq(rs.getInt("seq"));
+				m.setWriter(rs.getString("writer"));
 				m.setTitle(rs.getString("title"));
 				m.setContent(rs.getString("content"));
 				m.setRegdate(rs.getString("regdate"));
+				m.setCnt(rs.getInt("cnt"));
 				mList.add(m);
 				isEmpty =false;
 			}

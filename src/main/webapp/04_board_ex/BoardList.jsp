@@ -10,19 +10,19 @@
 %>
 
 <%
-int p = 1;
-String pNum = request.getParameter("page");
+	int p = 1;
+	String pNum = request.getParameter("page");
 
-if (pNum != null ){
+	if (pNum != null ){
 	p = Integer.parseInt(pNum);
-}
-// 전체 메세지 레코드 검색
+	}
+	// 전체 메세지 레코드 검색
 
-ListArticleService service = ListArticleService.getInstance();
-List <BoardVO> mList =  service.getArticleList(pNum);
-int totalPageCount = service.getTotalPage();
-if(p==1) p=2;
-if(p==totalPageCount) p= totalPageCount -1;
+	ListArticleService service = ListArticleService.getInstance();
+	List <BoardVO> mList =  service.getArticleList(pNum);
+	int totalPageCount = service.getTotalPage();
+	if(p==1) p=2;
+	if(p==totalPageCount) p= totalPageCount -1;
  
 %>
 
@@ -65,18 +65,14 @@ if(p==totalPageCount) p= totalPageCount -1;
 			<td colspan="5"><a href="BoardInputForm.jsp">글쓰기</a></td>
 		</tr>
 		<tr>
-
-		<td colspan =5 align="center">
-			<a href="BoardList.jsp?page=1">◀◀</a>
-			<a href="BoardList.jsp?page=<%=p-1%>">◀</a>
-			<% for(int i=1;i<=totalPageCount; i++){%>
-			<a href="BoardList.jsp?page=<%=i%>"> [<%= i %>]
-			</a>
-			<%} %>
-			<a href="BoardList.jsp?page=<%=p+1%>">▶</a>
-			<a href="BoardList.jsp?page=<%=totalPageCount%>">▶▶</a>
-		</td>
-
+			<td colspan=5 align="center"><a href="BoardList.jsp?page=1">◀◀</a>
+				<a href="BoardList.jsp?page=<%=p-1%>">◀</a> 
+					<% for(int i=1;i<=totalPageCount; i++){%>
+				<a href="BoardList.jsp?page=<%=i%>"> [<%= i %>]</a>
+					<%} %> 
+				<a href="BoardList.jsp?page=<%=p+1%>">▶</a> 
+				<a href="BoardList.jsp?page=<%=totalPageCount%>">▶▶</a>
+			</td>
 		</tr>
 	</table>
 </BODY>
